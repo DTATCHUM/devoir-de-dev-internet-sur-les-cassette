@@ -1,0 +1,140 @@
+/* Couleur principale (Fond) : #f0f0f0 (gris clair)
+Couleur d'accent : #ff7043 (orange vif)
+Couleur secondaire : #388e3c (vert pomme)
+Couleur neutre : #333333 (gris foncé pour le texte) */
+body{
+    background-color: #f0f0f0;
+}
+button{
+    margin-left: 70%;
+    padding: 10px;
+    background-color: #ff7043 ;
+    color:  #388e3c;
+}
+button:hover{
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    background-color: #a0f0f0;
+}
+input{
+    width: 50%;
+    padding: 0.5%;
+    border: none ;
+    margin: 0.8%;
+    background-color:#388e3c;
+    color: black;
+    border-radius: 10%;
+    -webkit-border-radius: 10%;
+    -moz-border-radius: 10%;
+    -ms-border-radius: 10%;
+    -o-border-radius: 10%;
+    cursor: text;
+}
+section{
+
+    width: 50%;
+    padding: 0.5%;
+    border: none ;
+    margin: 0.8%;
+    background-color:#388e3c;
+    color:  #ff7043;
+    border-radius: 10%;
+    -webkit-border-radius: 10%;
+    -moz-border-radius: 10%;
+    -ms-border-radius: 10%;
+    -o-border-radius: 10%;
+}
+hr{
+    color: black;
+}
+a{
+text-decoration: none;
+    margin-left: 70%;
+    padding: 10px;
+    background-color: #ff7043 ;
+    color:  #388e3c;
+}
+
+a:hover{
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    background-color: #a0f0f0;
+}
+
+  
+  input:focus {
+    border-color: #76b5ff;
+    background-color: #333;
+    color: #76b5ff ;
+  }
+  input::placeholder{
+    color: black;
+  }
+  select:focus{
+
+    border-color: #76b5ff;
+    background-color: #6d5a5a;
+    color: #f0f0f0;
+  }
+/* Style de base pour le tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+
+/* En-tête du tableau */
+table th {
+    background-color: #4CAF50; /* Couleur verte pour l'en-tête */
+    color: white; /* Texte en blanc */
+    padding: 12px;
+    border: 1px solid #ddd; /* Bordures discrètes */
+}
+
+/* Cellules du tableau */
+table td {
+    border: 1px solid #ddd; /* Bordures fines */
+    padding: 12px;
+}
+
+/* Rangées alternées */
+table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Gris clair */
+}
+
+table tr:nth-child(odd) {
+    background-color: #ffffff; /* Blanc */
+}
+
+/* Survol des rangées */
+table tr:hover {
+    background-color: #f1f1f1; /* Couleur de survol */
+    cursor: text; /* Curseur en pointeur */
+}
+
+/* Cellules éditables */
+table td[contenteditable="true"] {
+    background-color: #fffae6; /* Jaune clair pour les cellules éditables */
+    outline: none; /* Supprime les bordures par défaut lors de l'édition */
+    transition: background-color 0.3s ease;
+}
+
+/* Survol des cellules éditables */
+table td[contenteditable="true"]:hover {
+    background-color: #fff0cc; /* Jaune un peu plus foncé au survol */
+}
+
+/* Bordure du tableau */
+table {
+    border: 1px solid #ddd; /* Bordure extérieure */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre portée */
+}

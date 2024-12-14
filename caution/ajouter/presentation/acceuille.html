@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Générer formulaire</title>
+  <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+  <form action="../traitement/insertion.php" method="post">
+    <label for="nombre">Nombre de caution a ajouter:</label>
+    <input type="number" id="nombre" name="nombre" placeholder="Nombre de cautions">
+    <!-- Changez le type du bouton en "button" pour éviter de soumettre le formulaire -->
+    <button type="button" id="myButton" onclick="generer(event)">Générer le formulaire</button>
+
+    <div id="formulaire-container"></div>
+
+  </form>
+  <script src="acceuille.js"></script>
+</body>
+</html>
