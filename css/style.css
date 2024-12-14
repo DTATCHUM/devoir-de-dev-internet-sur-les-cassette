@@ -91,6 +91,33 @@ table {
     font-family: Arial, sans-serif;
     text-align: left;
 }
+.selected {
+    background-color: #ffcccb; /* Couleur de fond pour la sélection */
+}
+/* Style de la ligne sélectionnée */
+.selected {
+    background-color: #ffcccb; /* Couleur de surbrillance pour les lignes sélectionnées */
+}
+
+/* Cacher la colonne de case à cocher, ou la personnaliser selon le besoin */
+#actorTable th:first-child, #actorTable td:first-child {
+    width: 50px;
+    text-align: center;
+}
+
+/* Styliser le bouton de suppression */
+#deleteSelected {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#deleteSelected:hover {
+    background-color: #d32f2f;
+}
 
 /* En-tête du tableau */
 table th {

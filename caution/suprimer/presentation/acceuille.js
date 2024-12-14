@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const tableBody = document.querySelector("#actorTable tbody");
+    const tableBody = document.querySelector("#cautionTable tbody");
     const deleteSelectedButton = document.getElementById("deleteSelected");
 
     // Charger les données depuis le serveur
-    function loadActors() {
-        fetch("../../modifier/traitement/liste_acteur.php")
+    function loadCautions() {
+        fetch("../../modifier/traitement/liste_caution.php")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Erreur lors de la récupération des données : " + response.status);
@@ -20,33 +20,38 @@ document.addEventListener("DOMContentLoaded", function () {
                 tableBody.innerHTML = ""; // Vide le tableau
 
                 // Ajouter les lignes au tableau
-                data.forEach((actor) => {
+                data.forEach((caution) => {
                     const row = document.createElement("tr");
 
                     // Colonne case à cocher
                     const checkboxCell = document.createElement("td");
                     const checkbox = document.createElement("input");
                     checkbox.type = "checkbox";
-                    checkbox.dataset.id = actor.id_acteur; // Ajouter l'ID à la case à cocher
+                    checkbox.dataset.id = caution.id_caution; // Ajouter l'ID à la case à cocher
                     checkboxCell.appendChild(checkbox);
 
                     // Cellule pour l'ID
                     const idCell = document.createElement("td");
-                    idCell.textContent = actor.id_acteur;
+                    idCell.textContent = caution.id_caution;
 
-                    // Cellule pour le nom
-                    const nameCell = document.createElement("td");
-                    nameCell.textContent = actor.nom_acteur;
+                    // Cellule pour le montant
+                    const montantCell = document.createElement("td");
+                    montantCell.textContent = caution.montant;
+
+                    // Cellule pour la durée
+                    const dureeCell = document.createElement("td");
+                    dureeCell.textContent = caution.durre;
 
                     row.appendChild(checkboxCell);
                     row.appendChild(idCell);
-                    row.appendChild(nameCell);
+                    row.appendChild(montantCell);
+                    row.appendChild(dureeCell);
                     tableBody.appendChild(row);
                 });
             })
             .catch((error) => {
                 console.error("Erreur lors de la récupération des données :", error);
-                alert("Impossible de charger les acteurs. Consultez la console pour plus d'informations.");
+                alert("Impossible de charger les cautions. Consultez la console pour plus d'informations.");
             });
     }
 
@@ -72,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (selectedIds.length > 0) {
-            fetch("../traitement/supression.php", {
+            fetch("../traitement/suppression.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -108,6 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Charger les acteurs au démarrage
-    loadActors();
+    // Charger les cautions au démarrage
+    loadCautions();
 });

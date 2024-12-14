@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Générer formulaire</title>
-  <link rel="stylesheet" href="../../../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modification des Acteurs</title>
+    <link rel="stylesheet" href="../../../css/style.css">
 </head>
 <body>
-  <form action="../traitement/supression.php" method="post">
-    <label for="nombre">Nombre d'acteur a ajouter:</label>
-    <input type="number" id="nombre" name="nombre" placeholder="Nombre d'acteurs">
-    <!-- Changez le type du bouton en "button" pour éviter de soumettre le formulaire -->
-    <button type="button" id="myButton" onclick="generer(event)">Générer le formulaire</button>
-
-    <div id="formulaire-container"></div>
-
-  </form>
-  <script src="acceuille.js"></script>
+    <form id="actorForm">
+        <table id="actorTable">
+            <thead>
+                <tr>
+                    <th></th> <!-- Colonne pour la case à cocher -->
+                    <th>Id_acteur</th>
+                    <th>Nom_acteur</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Les lignes seront générées dynamiquement ici -->
+            </tbody>
+        </table>
+        <button type="button" id="deleteSelected">Supprimer</button>
+    </form>
+    <script src="acceuille.js"></script>
 </body>
 </html>

@@ -26,15 +26,15 @@ try {
     // Créer une liste de placeholders pour la requête SQL
     $placeholders = rtrim(str_repeat('?, ', count($ids)), ', ');
 
-    // Suppression des acteurs dont les IDs sont dans la liste
-    $stmt = $pdo->prepare("DELETE FROM acteur WHERE id_acteur IN ($placeholders)");
+    // Suppression des cautions dont les IDs sont dans la liste
+    $stmt = $pdo->prepare("DELETE FROM caution WHERE id_caution IN ($placeholders)");
     $stmt->execute($ids);
 
     // Vérification du nombre de lignes supprimées
     if ($stmt->rowCount() > 0) {
-        echo json_encode(['success' => true, 'message' => 'Acteurs supprimés avec succès']);
+        echo json_encode(['success' => true, 'message' => 'Cautions supprimées avec succès']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Aucun acteur trouvé à supprimer']);
+        echo json_encode(['success' => false, 'message' => 'Aucune caution trouvée à supprimer']);
     }
 
 } catch (PDOException $e) {

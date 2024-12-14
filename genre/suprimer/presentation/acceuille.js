@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const tableBody = document.querySelector("#actorTable tbody");
+    const tableBody = document.querySelector("#genreTable tbody");
     const deleteSelectedButton = document.getElementById("deleteSelected");
 
     // Charger les données depuis le serveur
-    function loadActors() {
-        fetch("../../modifier/traitement/liste_acteur.php")
+    function loadGenres() {
+        fetch("../traitement/liste_genre.php")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Erreur lors de la récupération des données : " + response.status);
@@ -20,33 +20,33 @@ document.addEventListener("DOMContentLoaded", function () {
                 tableBody.innerHTML = ""; // Vide le tableau
 
                 // Ajouter les lignes au tableau
-                data.forEach((actor) => {
+                data.forEach((genre) => {
                     const row = document.createElement("tr");
 
                     // Colonne case à cocher
                     const checkboxCell = document.createElement("td");
                     const checkbox = document.createElement("input");
                     checkbox.type = "checkbox";
-                    checkbox.dataset.id = actor.id_acteur; // Ajouter l'ID à la case à cocher
+                    checkbox.dataset.id = genre.nom_genre; // Ajouter le nom du genre à la case à cocher
                     checkboxCell.appendChild(checkbox);
 
-                    // Cellule pour l'ID
-                    const idCell = document.createElement("td");
-                    idCell.textContent = actor.id_acteur;
+                    // Cellule pour le nom du genre
+                    const nomGenreCell = document.createElement("td");
+                    nomGenreCell.textContent = genre.nom_genre;
 
-                    // Cellule pour le nom
-                    const nameCell = document.createElement("td");
-                    nameCell.textContent = actor.nom_acteur;
+                    // Cellule pour le type public
+                    const typePublicCell = document.createElement("td");
+                    typePublicCell.textContent = genre.type_public;
 
                     row.appendChild(checkboxCell);
-                    row.appendChild(idCell);
-                    row.appendChild(nameCell);
+                    row.appendChild(nomGenreCell);
+                    row.appendChild(typePublicCell);
                     tableBody.appendChild(row);
                 });
             })
             .catch((error) => {
                 console.error("Erreur lors de la récupération des données :", error);
-                alert("Impossible de charger les acteurs. Consultez la console pour plus d'informations.");
+                alert("Impossible de charger les genres. Consultez la console pour plus d'informations.");
             });
     }
 
@@ -108,6 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Charger les acteurs au démarrage
-    loadActors();
+    // Charger les genres au démarrage
+    loadGenres();
 });

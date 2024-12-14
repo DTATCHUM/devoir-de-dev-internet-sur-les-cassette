@@ -26,15 +26,15 @@ try {
     // Créer une liste de placeholders pour la requête SQL
     $placeholders = rtrim(str_repeat('?, ', count($ids)), ', ');
 
-    // Suppression des acteurs dont les IDs sont dans la liste
-    $stmt = $pdo->prepare("DELETE FROM acteur WHERE id_acteur IN ($placeholders)");
+    // Suppression des magasins dont les IDs sont dans la liste
+    $stmt = $pdo->prepare("DELETE FROM magasin WHERE id_magasin IN ($placeholders)");
     $stmt->execute($ids);
 
     // Vérification du nombre de lignes supprimées
     if ($stmt->rowCount() > 0) {
-        echo json_encode(['success' => true, 'message' => 'Acteurs supprimés avec succès']);
+        echo json_encode(['success' => true, 'message' => 'Magasins supprimés avec succès']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Aucun acteur trouvé à supprimer']);
+        echo json_encode(['success' => false, 'message' => 'Aucun magasin trouvé à supprimer']);
     }
 
 } catch (PDOException $e) {

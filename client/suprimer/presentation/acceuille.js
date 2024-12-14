@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const tableBody = document.querySelector("#actorTable tbody");
+    const tableBody = document.querySelector("#clientTable tbody");
     const deleteSelectedButton = document.getElementById("deleteSelected");
 
     // Charger les données depuis le serveur
-    function loadActors() {
-        fetch("../../modifier/traitement/liste_acteur.php")
+    function loadClients() {
+        fetch("../traitement/liste_client.php")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Erreur lors de la récupération des données : " + response.status);
@@ -20,33 +20,43 @@ document.addEventListener("DOMContentLoaded", function () {
                 tableBody.innerHTML = ""; // Vide le tableau
 
                 // Ajouter les lignes au tableau
-                data.forEach((actor) => {
+                data.forEach((client) => {
                     const row = document.createElement("tr");
 
                     // Colonne case à cocher
                     const checkboxCell = document.createElement("td");
                     const checkbox = document.createElement("input");
                     checkbox.type = "checkbox";
-                    checkbox.dataset.id = actor.id_acteur; // Ajouter l'ID à la case à cocher
+                    checkbox.dataset.id = client.id_client; // Ajouter l'ID à la case à cocher
                     checkboxCell.appendChild(checkbox);
 
-                    // Cellule pour l'ID
+                    // Cellule pour l'ID client
                     const idCell = document.createElement("td");
-                    idCell.textContent = actor.id_acteur;
+                    idCell.textContent = client.id_client;
 
                     // Cellule pour le nom
-                    const nameCell = document.createElement("td");
-                    nameCell.textContent = actor.nom_acteur;
+                    const nomCell = document.createElement("td");
+                    nomCell.textContent = client.nom;
+
+                    // Cellule pour l'adresse
+                    const adresseCell = document.createElement("td");
+                    adresseCell.textContent = client.adresse;
+
+                    // Cellule pour l'ID magasin
+                    const magasinCell = document.createElement("td");
+                    magasinCell.textContent = client.id_magasin;
 
                     row.appendChild(checkboxCell);
                     row.appendChild(idCell);
-                    row.appendChild(nameCell);
+                    row.appendChild(nomCell);
+                    row.appendChild(adresseCell);
+                    row.appendChild(magasinCell);
                     tableBody.appendChild(row);
                 });
             })
             .catch((error) => {
                 console.error("Erreur lors de la récupération des données :", error);
-                alert("Impossible de charger les acteurs. Consultez la console pour plus d'informations.");
+                alert("Impossible de charger les clients. Consultez la console pour plus d'informations.");
             });
     }
 
@@ -72,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (selectedIds.length > 0) {
-            fetch("../traitement/supression.php", {
+            fetch("../traitement/suppression.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -108,6 +118,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Charger les acteurs au démarrage
-    loadActors();
+    // Charger les clients au démarrage
+    loadClients();
 });
